@@ -6,13 +6,29 @@ import {AppComponent} from "./app.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {HeaderComponent} from "./components/header/header.component";
 import {TopMenuComponent} from "./components/top-menu/top-menu.component";
+import {BreadCrumbsComponent} from "./components/bread-crumbs/bread-crumbs.component";
+import {LeftMenuComponent} from "./components/left-menu/left-menu.component";
+import {WelcomeUserComponent} from "./components/welcome-user/welcome-user.component";
+import {WelcomeComponent} from "./components/welcome/welcome.component";
+import {FooterComponent} from "./components/footer/footer.component";
+import {ListComponent} from "./components/list/list.component";
+import {CatalogComponent} from "./components/catalog/catalog.component";
+import {ControlsComponent} from "./components/controls/controls.component";
 
 
 @NgModule({
     declarations: [
         AppComponent,
         HeaderComponent,
-        TopMenuComponent
+        TopMenuComponent,
+        BreadCrumbsComponent,
+        LeftMenuComponent,
+        WelcomeUserComponent,
+        WelcomeComponent,
+        FooterComponent,
+        ListComponent,
+        CatalogComponent,
+        ControlsComponent
     ],
     imports: [
         BrowserModule,
