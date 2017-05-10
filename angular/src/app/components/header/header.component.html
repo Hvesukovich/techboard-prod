@@ -1,0 +1,23 @@
+<div class="site-header-wrapper">
+    <header class="site-header">
+        <div class="container sp-cont">
+            <div class="site-logo">
+                <h1><a [routerLink]="''"><img src="http://placehold.it/100x50" alt="Logo"></a></h1>
+                <span class="site-tagline">Buying or Selling,<br>just got easier!</span>
+            </div>
+            <div class="header-right">
+                <div class="user-login-panel">
+                    <a href="#" class="user-login-btn" data-toggle="modal" data-target="#loginModal"><i class="icon-profile"></i></a>
+                </div>
+                <div class="topnav dd-menu">
+                    <ul class="top-navigation sf-menu">
+                        <li><a href="#" data-toggle="modal" data-target="#loginModal">Вход</a></li>
+                        <li><a [routerLink]="'/user-registration'">Регистрация</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Site Header -->
+    <!--<app-top-menu></app-top-menu>-->
+</div>
