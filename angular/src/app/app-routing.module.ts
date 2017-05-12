@@ -6,7 +6,7 @@ import {CatalogComponent} from "./components/catalog/catalog.component";
 
 const ROUTES = [
     {path: '', component: WelcomeUserComponent},
-    {path: 'catalog', component: CatalogComponent},
+    {path: 'catalog/:idCategory', component: CatalogComponent},
 
     {path: '**', component: WelcomeUserComponent}
 ];

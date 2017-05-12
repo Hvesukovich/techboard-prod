@@ -1,0 +1,9 @@
+.breadcrumb[_ngcontent-c2] > li[_ngcontent-c2] + li[_ngcontent-c2]:before{
+    content:"/\00a0";
+}
+
+.breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
+}
