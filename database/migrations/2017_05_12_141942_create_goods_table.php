@@ -22,7 +22,7 @@ class CreateGoodsTable extends Migration
             $table->text('description')->nullable();
             $table->text('text')->nullable();
             $table->text('video_link')->nullable();
-            $table->text('map')->nullable();
+            $table->string('map')->nullable();
             $table->float('price')->nullable();
             $table->float('old_price')->nullable();
             $table->text('keywords')->nullable();
