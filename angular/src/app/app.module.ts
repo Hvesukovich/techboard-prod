@@ -24,6 +24,8 @@ import { UserEditingAnAdComponent } from './components/user-editing-an-ad/user-e
 import { EditingAnAdComponent } from './components/editing-an-ad/editing-an-ad.component';
 import { UserWishListComponent } from './components/user-wish-list/user-wish-list.component';
 import { WishListComponent } from './components/wish-list/wish-list.component';
+import {CategoriesService} from "./services/categories.service";
+import {RequestsService} from "./services/requests.service";
 
 
 @NgModule({
@@ -56,7 +58,10 @@ import { WishListComponent } from './components/wish-list/wish-list.component';
         HttpModule,
         AppRoutingModule
     ],
-    providers: [],
+    providers: [
+        CategoriesService,
+        RequestsService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

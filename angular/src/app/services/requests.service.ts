@@ -17,7 +17,6 @@ export class RequestsService {
             this.http.post('http://techboard-prod/api/categories', params.toString(), { headers: this.headers }).subscribe((data: Response) => {
                 resolve(data.json());
             }, error => {
-                console.log(error);
                 reject(error);
             });
         });
