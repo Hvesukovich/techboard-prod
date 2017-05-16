@@ -20,7 +20,6 @@ class CreateContactsTable extends Migration
             $table->integer('users_id')->index();
             $table->boolean('show');
             $table->timestamps();
-
         });
     }
 

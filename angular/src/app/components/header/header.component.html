@@ -12,12 +12,85 @@
                 <div class="topnav dd-menu">
                     <ul class="top-navigation sf-menu">
                         <li><a href="#" data-toggle="modal" data-target="#loginModal">Вход</a></li>
-                        <li><a [routerLink]="'/user-registration'">Регистрация</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#registrationModal">Регистрация</a></li>
+                        <!--<li><a [routerLink]="'/user-registration'">Регистрация</a></li>-->
                     </ul>
                 </div>
             </div>
         </div>
     </header>
     <!-- End Site Header -->
-    <app-top-menu></app-top-menu>
 </div>
+<!--Модальное окно "Вход"-->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Вход в аккаунт</h4>
+            </div>
+            <form>
+                <div class="modal-body">
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Username">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Войти">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--Конец модального окна "Вход"-->
+<!--Модальное окно "Регистрация"-->
+<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Регистрация</h4>
+            </div>
+            <form method="post" name="registration" id="registration"
+                  (ngSubmit)="registration.form.valid && createUser(name, email, password, confirmPassword)" #registration="ngForm"
+                  novalidate>
+                <!-- Regular Signup -->
+                <div class="regular-signup">
+                    <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationName.valid }">
+                        <input type="text" id="name" name="name" class="form-control"  placeholder="Введите имя*" required
+                               [(ngModel)]="name" #registrationName="ngModel">
+                        <div *ngIf="registration.submitted && !registrationName.valid" class="help-block">Введите имя*</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationEmail.valid }">
+                        <input type="email" id="email" name="email" class="form-control"  placeholder="Введите email*" required
+                               [(ngModel)]="email" #registrationEmail="ngModel">
+                        <div *ngIf="registration.submitted && !registrationEmail.valid" class="help-block">Введите email*</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationPassword.valid }">
+                        <input type="password" id="password" name="password" class="form-control password-input"
+                               placeholder="Введите пароль*" required [(ngModel)]="password" #registrationPassword="ngModel">
+                        <div *ngIf="registration.submitted && !registrationPassword.valid" class="help-block">Введите пароль*</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationConfirmPassword.valid }">
+                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control password-input"
+                               placeholder="Подтвердите пароль*" required [(ngModel)]="confirmPassword" #registrationConfirmPassword="ngModel">
+                        <div *ngIf="registration.submitted && !registrationConfirmPassword.valid" class="help-block">Подтвердите пароль*</div>
+                    </div>
+                    <label class="checkbox-inline"><input type="checkbox">By signing up, I agree to the <a href="#">terms &amp; conditions</a> and <a href="#">privacy policy</a></label>
+                    <div class="spacer-20"></div>
+                    <div class="modal-footer">
+                        <button type="submit" [disabled]="loading" class="btn btn-primary btn-lg btn-block">Зарегистрироваться</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--Конец модального окна "Регистрация"-->

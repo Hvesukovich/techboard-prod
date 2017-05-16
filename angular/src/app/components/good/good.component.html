@@ -1,0 +1,293 @@
+<div class="main" role="main">
+  <div id="content" class="content full">
+    <div class="container">
+      <!-- Vehicle Details -->
+      <article class="single-vehicle-details">
+        <div *ngIf="good">
+          <div class="single-vehicle-title">
+            <span class="badge-premium-listing">Premium listing</span>
+            <h2 class="post-title">{{good.name}}</h2>
+          </div>
+          <div class="single-listing-actions">
+            <div class="btn-group pull-right" role="group">
+              <button class="btn btn-default" title="Сохранить в избранное" (click)="addToFavorites(good.id)"><i [ngStyle]="{'color': 'blue'}" class="fa fa-star-o"></i>
+                <span>Сохранить в избранное</span></button>
+              <button data-toggle="modal" data-target="#infoModal" class="btn btn-default"
+                      title="Request more info"><i class="fa fa-info"></i> <span>Request more info</span></button>
+              <button href="javascript:void(0)" onclick="window.print();" class="btn btn-default"
+                      title="Print"><i
+                      class="fa fa-print"></i> <span>Print</span></button>
+            </div>
+            <div class="btn btn-info price">{{good.price}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="single-listing-images">
+                <div class="featured-image format-image">
+                  <a href="http://placehold.it/890x600&amp;text=IMAGE+PLACEHOLDER"
+                     data-rel="prettyPhoto[gallery]" class="media-box"><img
+                          src="http://placehold.it/890x600&amp;text=IMAGE+PLACEHOLDER" alt=""></a>
+                </div>
+                <div class="additional-images">
+                  <ul class="owl-carousel" data-columns="4" data-pagination="no" data-arrows="yes"
+                      data-single-item="no" data-items-desktop="4" data-items-desktop-small="4"
+                      data-items-tablet="3" data-items-mobile="3">
+                    <li class="item format-video"><a
+                            href="https://www.youtube.com/watch?v=P5mvnA4BV7Y"
+                            data-rel="prettyPhoto[gallery]" class="media-box"><img
+                            src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a>
+                    </li>
+                    <li class="item format-image"><a
+                            href="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER"
+                            data-rel="prettyPhoto[gallery]" class="media-box"><img
+                            src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a>
+                    </li>
+                    <li class="item format-image"><a
+                            href="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER"
+                            data-rel="prettyPhoto[gallery]" class="media-box"><img
+                            src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a>
+                    </li>
+                    <li class="item format-image"><a
+                            href="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER"
+                            data-rel="prettyPhoto[gallery]" class="media-box"><img
+                            src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a>
+                    </li>
+                    <li class="item format-image"><a
+                            href="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER"
+                            data-rel="prettyPhoto[gallery]" class="media-box"><img
+                            src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 vehicle-details-sidebar sidebar">
+
+              <div class="sidebar-widget widget">
+                <ul class="list-group">
+                  <li class="list-group-item"><span class="badge">ID</span>{{good.id}}</li>
+                  <li class="list-group-item"><span class="badge">Название</span>{{good.name}}</li>
+                  <li class="list-group-item"><span class="badge">id каталога</span>{{getCatalogNameById(good.catalog_id)}}</li>
+                  <li class="list-group-item"><span class="badge">id пользователя</span>{{good.user_id}}</li>
+                  <li class="list-group-item"><span class="badge">Цена</span>{{good.price}}</li>
+                  <li class="list-group-item"><span class="badge">Старая цена</span>{{good.old_price}}</li>
+                </ul>
+              </div>
+              <div class="vehicle-enquiry-foot">
+                <span class="vehicle-enquiry-foot-ico"><i class="fa fa-phone"></i></span>
+                <strong>1800 011 2211</strong>Seller: <a href="#">Carcheck Sellers</a>
+              </div>
+              <!-- Financing Calculator -->
+            </div>
+
+          </div>
+          <div class="spacer-50"></div>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="tabs vehicle-details-tabs">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a data-toggle="tab" href="#vehicle-overview">Описание</a></li>
+                  <li><a data-toggle="tab" href="#vehicle-specs">Спецификации</a></li>
+                  <li><a data-toggle="tab" href="#vehicle-add-features">Видео</a></li>
+                  <li><a data-toggle="tab" href="#vehicle-location">Карта</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div id="vehicle-overview" class="tab-pane fade in active">
+                    {{good.text}}
+                  </div>
+                  <div id="vehicle-specs" class="tab-pane fade">
+                    <div class="accordion" id="toggleArea">
+                      <div class="accordion-group panel">
+                        <div class="accordion-heading togglize"><a class="accordion-toggle"
+                                                                   data-toggle="collapse"
+                                                                   data-parent="#"
+                                                                   href="#collapseOne"> Engine
+                          <i class="fa fa-plus-circle"></i> <i class="fa fa-minus-circle"></i>
+                        </a></div>
+                        <div id="collapseOne" class="accordion-body collapse">
+                          <div class="accordion-inner">
+                            <table class="table-specifications table table-striped table-hover">
+                              <tbody>
+                              <tr>
+                                <td>Engine type</td>
+                                <td>SKYACTIV-G 2.5 L DOHC 16-valve 4-cylinder engine
+                                  with VVT
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Displacement</td>
+                                <td>2,488 cc</td>
+                              </tr>
+                              <tr>
+                                <td>Compression ratio</td>
+                                <td>13.0:1</td>
+                              </tr>
+                              <tr>
+                                <td>Horsepower SAE net</td>
+                                <td>184 @ 5,700 rpm</td>
+                              </tr>
+                              <tr>
+                                <td>Torque SAE net lb. ft.</td>
+                                <td>185 @ 3,250 rpm</td>
+                              </tr>
+                              <tr>
+                                <td>Fuel system</td>
+                                <td>Direct injection</td>
+                              </tr>
+                              <tr>
+                                <td>Recommended fuel</td>
+                                <td>Regular</td>
+                              </tr>
+                              <tr>
+                                <td>Fuel economy city/highway (L/100
+                                  km)*<br/>Manual<br/>Automatic
+                                </td>
+                                <td>8.1/5.3<br/>7.6/5.1</td>
+                              </tr>
+                              <tr>
+                                <td>Curb weight (kg)<br/> Manual<br/>Automatic</td>
+                                <td>1,442<br/>1,465</td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-group panel">
+                        <div class="accordion-heading togglize"><a class="accordion-toggle"
+                                                                   data-toggle="collapse"
+                                                                   data-parent="#"
+                                                                   href="#collapseTwo"> Exterior
+                          <i class="fa fa-plus-circle"></i> <i class="fa fa-minus-circle"></i>
+                        </a></div>
+                        <div id="collapseTwo" class="accordion-body collapse">
+                          <div class="accordion-inner">
+                            <table class="table-specifications table table-striped table-hover">
+                              <tbody>
+                              <tr>
+                                <td>Wheelbase/overall length (mm)</td>
+                                <td>2,830/4,895</td>
+                              </tr>
+                              <tr>
+                                <td>Overall width (mm)</td>
+                                <td>1,840</td>
+                              </tr>
+                              <tr>
+                                <td>Overall height (mm)</td>
+                                <td>1,450</td>
+                              </tr>
+                              <tr>
+                                <td>Track (fr/rr) (mm)<br/>17" wheels<br/>19" wheels
+                                </td>
+                                <td>1,585/1,575<br/>1,595/1,585</td>
+                              </tr>
+                              <tr>
+                                <td>Turning circle, curb-to-curb (m)</td>
+                                <td>11.2</td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-group panel">
+                        <div class="accordion-heading togglize"><a class="accordion-toggle"
+                                                                   data-toggle="collapse"
+                                                                   data-parent="#"
+                                                                   href="#collapseThird">
+                          Interior <i class="fa fa-plus-circle"></i> <i
+                                class="fa fa-minus-circle"></i> </a></div>
+                        <div id="collapseThird" class="accordion-body collapse">
+                          <div class="accordion-inner">
+                            <table class="table-specifications table table-striped table-hover">
+                              <tbody>
+                              <tr>
+                                <td>Headroom (fr/rr) (mm)</td>
+                                <td>975/942</td>
+                              </tr>
+                              <tr>
+                                <td>Headroom (fr/rr) with moonroof (mm)</td>
+                                <td>950/942</td>
+                              </tr>
+                              <tr>
+                                <td>Legroom (fr/rr) (mm)</td>
+                                <td>1,073/984</td>
+                              </tr>
+                              <tr>
+                                <td>Shoulder room (fr/rr) (mm)</td>
+                                <td>1,450/1,410</td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-group panel">
+                        <div class="accordion-heading togglize"><a class="accordion-toggle"
+                                                                   data-toggle="collapse"
+                                                                   data-parent="#"
+                                                                   href="#collapseForth">
+                          Capacities <i class="fa fa-plus-circle"></i> <i
+                                class="fa fa-minus-circle"></i> </a></div>
+                        <div id="collapseForth" class="accordion-body collapse">
+                          <div class="accordion-inner">
+                            <table class="table-specifications table table-striped table-hover">
+                              <tbody>
+                              <tr>
+                                <td>Seating</td>
+                                <td>5</td>
+                              </tr>
+                              <tr>
+                                <td>Cargo volume (L)</td>
+                                <td>419</td>
+                              </tr>
+                              <tr>
+                                <td>Passenger volume (L)</td>
+                                <td>2,824</td>
+                              </tr>
+                              <tr>
+                                <td>Total interior volume (L)</td>
+                                <td>3,243</td>
+                              </tr>
+                              <tr>
+                                <td>Fuel tank (L)</td>
+                                <td>62</td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Toggle -->
+                  </div>
+                  <div id="vehicle-add-features" class="tab-pane fade">
+                    <ul class="add-features-list">
+                      <li>6 Speaker Stereo</li>
+                      <li>Driver &amp; Passenger Airbags</li>
+                      <li>Antilock Brakes</li>
+                      <li>Park Assist</li>
+                      <li>Cruise Control</li>
+                      <li>Power Steering</li>
+                      <li>17" Alloy Wheels</li>
+                    </ul>
+                  </div>
+                  <div id="vehicle-location" class="tab-pane fade">
+                    <iframe width="100%" height="300px" frameBorder="0"
+                            src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure"></iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="spacer-50"></div>
+              <!-- Recently Listed Vehicles -->
+
+            </div>
+            <!-- Vehicle Details Sidebar -->
+
+          </div>
+        </div>
+      </article>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
