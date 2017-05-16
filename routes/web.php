@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/api/categories', 'CategoriesController@getAllCategoriesJSON');
+Route::get('/api/categories', 'CategoriesController@getAllCategoriesJSON');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
