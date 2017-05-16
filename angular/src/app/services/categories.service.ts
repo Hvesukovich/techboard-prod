@@ -1,30 +1,10 @@
 import { Injectable } from '@angular/core';
 import {RequestsService} from "./requests.service";
-
-class CategoryModel {
-    public id;
-    public name;
-    public parent_id;
-    public title;
-    public description;
-    public text;
-    public keywords;
-    public show;
-
-    constructor(obj) {
-        this.id = obj['id'];
-        this.name = obj['name'];
-        this.parent_id = obj['parent_id'];
-        this.title = obj['title'];
-        this.description = obj['description'];
-        this.text = obj['text'];
-        this.keywords = obj['keywords'];
-        this.show = obj['show'];
-    }
-}
+import {CategoryModel} from "../models/categories.model";
 
 @Injectable()
 export class CategoriesService {
+    
 
     private categories: CategoryModel[] = null;
     
