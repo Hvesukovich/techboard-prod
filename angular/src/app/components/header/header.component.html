@@ -27,23 +27,33 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4>Вход в аккаунт</h4>
+                <h4 class="text-center">Вход в аккаунт</h4>
             </div>
-            <form>
+            <form method="post" name="enter_the_site" id="enter_the_site"
+                      (ngSubmit)="enter_the_site.form.valid && openUser(username, userpassword)" #enter_the_site="ngForm"
+                      novalidate>
                 <div class="modal-body">
-
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input type="text" class="form-control" placeholder="Username">
+                    <div class="regular-signup">
+                        <div class="form-group" [ngClass]="{ 'has-error': enter_the_site.submitted && !enter_the_siteName.valid }">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input type="text" id="username" name="username" class="form-control"  placeholder="Введите имя*" required
+                                       [(ngModel)]="username" #enter_the_siteName="ngModel">
+                            </div>
+                            <div *ngIf="enter_the_site.submitted && !enter_the_siteName.valid" class="help-block">Введите имя</div>
                         </div>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                            <input type="password" class="form-control" placeholder="Password">
+                        <div class="form-group" [ngClass]="{ 'has-error': enter_the_site.submitted && !enter_the_sitePassword.valid }">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                <input type="text" id="userpassword" name="userpassword" class="form-control"  placeholder="Введите пароль*" required
+                                       [(ngModel)]="userpassword" #enter_the_sitePassword="ngModel">
+                            </div>
+                            <div *ngIf="enter_the_site.submitted && !enter_the_sitePassword.valid" class="help-block">Введите пароль</div>
                         </div>
-
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-primary" value="Войти">
+                    <button type="submit" [disabled]="loading" class="btn btn-primary btn-lg btn-block">Войти</button>
                 </div>
             </form>
         </div>
@@ -56,38 +66,58 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4>Регистрация</h4>
+                <h4 class="text-center">Регистрация</h4>
             </div>
             <form method="post" name="registration" id="registration"
-                  (ngSubmit)="registration.form.valid && createUser(name, email, password, confirmPassword)" #registration="ngForm"
+                  (ngSubmit)="registration.form.valid && createUser(name, email, phone, password, confirmPassword)" #registration="ngForm"
                   novalidate>
                 <!-- Regular Signup -->
-                <div class="regular-signup">
-                    <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationName.valid }">
-                        <input type="text" id="name" name="name" class="form-control"  placeholder="Введите имя*" required
-                               [(ngModel)]="name" #registrationName="ngModel">
-                        <div *ngIf="registration.submitted && !registrationName.valid" class="help-block">Введите имя*</div>
+                <div class="modal-body">
+                    <div class="regular-signup">
+                        <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationName.valid }">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input type="text" id="name" name="name" class="form-control"  placeholder="Введите имя*" required
+                                   [(ngModel)]="name" #registrationName="ngModel">
+                            </div>
+                            <div *ngIf="registration.submitted && !registrationName.valid" class="help-block">Введите имя*</div>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationEmail.valid }">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" id="email" name="email" class="form-control"  placeholder="Введите email*" required
+                                   [(ngModel)]="email" #registrationEmail="ngModel">
+                            </div>
+                            <div *ngIf="registration.submitted && !registrationEmail.valid" class="help-block">Введите email*</div>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationPhone.valid }">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone-square"></i></span>
+                                <input type="text" id="phone" name="phone" class="form-control"  placeholder="Введите телефон*" required
+                                   [(ngModel)]="phone" #registrationPhone="ngModel">
+                            </div>
+                            <div *ngIf="registration.submitted && !registrationPhone.valid" class="help-block">Введите телефон*</div>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationPassword.valid }">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                <input type="password" id="password" name="password" class="form-control password-input"
+                                   placeholder="Введите пароль*" required [(ngModel)]="password" #registrationPassword="ngModel">
+                            </div>
+                            <div *ngIf="registration.submitted && !registrationPassword.valid" class="help-block">Введите пароль*</div>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationConfirmPassword.valid }">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control password-input"
+                                   placeholder="Подтвердите пароль*" required [(ngModel)]="confirmPassword" #registrationConfirmPassword="ngModel">
+                            </div>
+                            <div *ngIf="registration.submitted && !registrationConfirmPassword.valid" class="help-block">Подтвердите пароль*</div>
+                        </div>
                     </div>
-                    <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationEmail.valid }">
-                        <input type="email" id="email" name="email" class="form-control"  placeholder="Введите email*" required
-                               [(ngModel)]="email" #registrationEmail="ngModel">
-                        <div *ngIf="registration.submitted && !registrationEmail.valid" class="help-block">Введите email*</div>
-                    </div>
-                    <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationPassword.valid }">
-                        <input type="password" id="password" name="password" class="form-control password-input"
-                               placeholder="Введите пароль*" required [(ngModel)]="password" #registrationPassword="ngModel">
-                        <div *ngIf="registration.submitted && !registrationPassword.valid" class="help-block">Введите пароль*</div>
-                    </div>
-                    <div class="form-group" [ngClass]="{ 'has-error': registration.submitted && !registrationConfirmPassword.valid }">
-                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control password-input"
-                               placeholder="Подтвердите пароль*" required [(ngModel)]="confirmPassword" #registrationConfirmPassword="ngModel">
-                        <div *ngIf="registration.submitted && !registrationConfirmPassword.valid" class="help-block">Подтвердите пароль*</div>
-                    </div>
-                    <label class="checkbox-inline"><input type="checkbox">By signing up, I agree to the <a href="#">terms &amp; conditions</a> and <a href="#">privacy policy</a></label>
-                    <div class="spacer-20"></div>
-                    <div class="modal-footer">
-                        <button type="submit" [disabled]="loading" class="btn btn-primary btn-lg btn-block">Зарегистрироваться</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" [disabled]="loading" class="btn btn-primary btn-lg btn-block">Зарегистрироваться</button>
                 </div>
             </form>
         </div>

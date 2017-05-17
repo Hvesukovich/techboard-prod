@@ -9,13 +9,11 @@ import {CategoriesService} from "../../services/categories.service";
 
 export class CategoriesComponent {
 
-    private menu;
+    private categories;
     
     constructor(private categoriesService:CategoriesService) { 
-        this.categoriesService.getAllCategories().then((menu)=>{
-            this.menu = menu;
-            
-            console.log(this.menu);
+        this.categoriesService.getAllCategories().then((categories)=>{
+            this.categories = categories;
         });
     }
 

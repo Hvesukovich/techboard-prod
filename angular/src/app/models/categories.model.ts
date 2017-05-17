@@ -1,6 +1,3 @@
-/**
- * Created by Sergei on 16.05.2017.
- */
 export class CategoryModel {
     public id;
     public name;

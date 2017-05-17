@@ -26,6 +26,7 @@ import { UserWishListComponent } from './components/user-wish-list/user-wish-lis
 import { WishListComponent } from './components/wish-list/wish-list.component';
 import {CategoriesService} from "./services/categories.service";
 import {RequestsService} from "./services/requests.service";
+import {GoodsService} from "./services/goods.service";
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import {RequestsService} from "./services/requests.service";
     ],
     providers: [
         CategoriesService,
-        RequestsService
+        RequestsService,
+        GoodsService
     ],
     bootstrap: [AppComponent]
 })

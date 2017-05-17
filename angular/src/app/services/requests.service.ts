@@ -22,4 +22,17 @@ export class RequestsService {
         });
     }
 
+    public getGoodsByCategoriesId(categories_id): Promise<object[]> {
+        return new Promise((resolve, reject) =>{
+            var params = new URLSearchParams();
+            params.set('categories_id', categories_id);
+
+            this.http.post('http://techboard-prod/api/goods', params.toString(), { headers: this.headers }).subscribe((data: Response) => {
+                resolve(data.json());
+            }, error => {
+                reject(error);
+            });
+        });
+    }
+
 }

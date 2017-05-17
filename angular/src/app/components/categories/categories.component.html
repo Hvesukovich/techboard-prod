@@ -1,18 +1,15 @@
 <div class="col-md-3 search-filters" id="Search-Filters">
   <div class="tbsticky filters-sidebar">
-    <h3>Refine Search</h3>
+    <h3>Каталог</h3>
     <div class="accordion" id="toggleArea">
       <!-- Filter by Year -->
-      <div class="accordion-group panel" *ngFor="let value of menu">
+      <div class="accordion-group panel" *ngFor="let value of categories">
         <div class="accordion-heading togglize">
-          <a [routerLink]="'/goods/' + value.id" class="accordion-toggle">
+          <a [routerLink]="'/catalog/' + value.id" class="accordion-toggle">
             {{value.name}}
           </a>
         </div>
       </div>
     </div>
-    <!-- End Toggle -->
-    <a href="#" class="btn-default btn-sm btn"><i class="fa fa-refresh"></i> Reset search</a>
-    <a href="#" class="btn-primary btn-sm btn"><i class="fa fa-folder-o"></i> Save search</a>
   </div>
 </div>
