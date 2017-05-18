@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {GoodsService} from "./services/goods.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+
+    constructor(private goodsService:GoodsService) {
+        this.goodsService.getAllGoodsByIds();
+    }
 }

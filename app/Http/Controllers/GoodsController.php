@@ -7,12 +7,9 @@ use Illuminate\Http\Request;
 
 class GoodsController extends Controller
 {
-    public function getGoodsByCategoriesIdJSON(){
-        $input = \Request::all();
-        $input['categories_id'] = 3;
-
+    public function getAllGoodsIdsJSON(){
         $Goods = new Goods();
-        $goodsResponse = $Goods->getGoodsByCategoriesId($input);
+        $goodsResponse = $Goods->getAllGoodsIds();
         return response()
             ->json($goodsResponse)
             ->header('Access-Control-Allow-Origin', '*')

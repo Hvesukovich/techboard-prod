@@ -23,7 +23,7 @@ class Goods extends Model
         'show'
     ];
 
-    public function getGoodsByCategoriesId($input){
-        return $this->where('categories_id', '=', $input['categories_id'])->get()->toArray();
+    public function getAllGoodsIds(){
+        return $this->select('id', 'categories_id', 'users_id')->get()->toArray();
     }
 }
