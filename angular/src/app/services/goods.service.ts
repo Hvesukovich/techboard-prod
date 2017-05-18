@@ -38,7 +38,7 @@ export class GoodsService {
         let arr_idGoods = [];
         let zapros = false;
         for(let good of this.AllGoods){
-            if(good['categories_id'] === categories_id){
+            if(good['categories_id'] == categories_id){
                 if((good['name'] && good['name'] != 'undefined') &&
                     (good['title'] && good['title'] != 'undefined') &&
                     (good['description'] && good['description'] != 'undefined') &&
@@ -55,16 +55,38 @@ export class GoodsService {
                     zapros = true;
                 }
             }
-            if(zapros === true){
-                console.log(zapros);
-                console.log('Товары' + arr_idGoods);
-                console.log('Все товары' + this.AllGoods);
-            }
+        }
+        if(zapros === true){
+            this.getGoodsById(arr_idGoods).then(() => {
+                return this.getGoodsByCategoriesId(categories_id);
+            });
         }
         console.log(zapros);
-        console.log('Товары' + arr_idGoods);
-        console.log('Все товары' + this.AllGoods);
+        console.log('Товары: ' + arr_idGoods);
         return this.goods;
+    }
+
+    private getGoodsById(arr_idGoods){
+        return new Promise((resolve, reject) => {
+            this.requestsService.getGoodsById(arr_idGoods).then((goods) => {
+                for(let good of this.AllGoods) {
+                    for(let value of goods) {
+                        if(good['id'] == value['id']){
+                            good['name'] = value['name'];
+                            good['title'] = value['title'];
+                            good['description'] = value['description'];
+                            good['price'] = value['price'];
+                            good['old_price'] = value['old_price'];
+                            good['show'] = value['show'];
+                            good['created_at'] = value['created_at'];
+                            good['updated_at'] = value['updated_at'];
+                            return;
+                        }
+                    }
+                }
+                resolve(this.AllGoods);
+            });
+        });
     }
 
 }

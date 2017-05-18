@@ -26,4 +26,11 @@ class Goods extends Model
     public function getAllGoodsIds(){
         return $this->select('id', 'categories_id', 'users_id')->get()->toArray();
     }
+
+    public function getGoodsId($input){
+        return $this->select(
+            'id', 'name', 'title', 'description', 'price', 'old_price', 'show', 'created_at', 'updated_at'
+        )->whereIN('id', $input['arr_idGoods'])->get()->toArray();
+    }
+
 }

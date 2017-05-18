@@ -19,4 +19,19 @@ class GoodsController extends Controller
             ;
 
     }
+
+    public function getGoodsIdJSON(){
+        $input = \Request::all();
+        $input['arr_idGoods'] = [5, 3];
+
+        $Goods = new Goods();
+        $goodsResponse = $Goods->getGoodsId($input);
+        return response()
+            ->json($goodsResponse)
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->header('Access-Control-Max-Age', '1000')
+            ->header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, X-CSRF-TOKEN')
+            ;
+    }
 }
