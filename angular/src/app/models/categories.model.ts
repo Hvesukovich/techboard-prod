@@ -1,21 +1,37 @@
 export class CategoryModel {
-    public id;
-    public name;
-    public parent_id;
-    public title;
-    public description;
-    public text;
-    public keywords;
-    public show;
+    public id = null;
+    public name = null;
+    public parent_id = null;
+    public title = null;
+    public description = null;
+    public text = null;
+    public keywords = null;
+    public show = null;
 
     constructor(obj) {
-        this.id = obj['id'];
-        this.name = obj['name'];
-        this.parent_id = obj['parent_id'];
-        this.title = obj['title'];
-        this.description = obj['description'];
-        this.text = obj['text'];
-        this.keywords = obj['keywords'];
-        this.show = obj['show'];
+        if(obj['id']){
+            this.id = obj['id'];
+        }
+        if(obj['name']){
+            this.name = obj['name'];
+        }
+        if(obj['parent_id']){
+            this.parent_id = obj['parent_id'];
+        }
+        if(obj['title']){
+            this.title = obj['title'];
+        }
+        if(obj['description']){
+            this.description = obj['description'];
+        }
+        if(obj['text']){
+            this.text = obj['text'];
+        }
+        if(obj['keywords']){
+            this.keywords = obj['keywords'];
+        }
+        if(obj['show']){
+            this.show = obj['show'];
+        }
     }
 }

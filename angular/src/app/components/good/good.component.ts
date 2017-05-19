@@ -10,16 +10,16 @@ import {Subscription} from "rxjs/Rx";
 })
 export class GoodComponent implements OnInit {
     private subscription:Subscription;
-    private good;
-    
-    
-    constructor(private goodsService:GoodsService, private activatedRoute:ActivatedRoute, private router:Router) {
-        //     this.subscription = activatedRoute.params.subscribe(params => {
-        //     this.goodsService.getGood(params['id']).then((good) => {
-        //         this.good = good;
-        //     });
-        // });
 
+    constructor(private goodsService: GoodsService, private activatedRoute:ActivatedRoute, private router: Router) {
+        this.subscription = activatedRoute.params.subscribe(params => {
+            this.goodsService.getGoodById(params['id']);
+            // console.log(this.goodsService.good);
+        });
+    }
+
+    public addToFavorites(good_id) {
+        
     }
 
     ngOnInit() {

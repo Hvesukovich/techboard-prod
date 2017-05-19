@@ -10,11 +10,10 @@ import {Subscription} from "rxjs/Rx";
 })
 export class ListComponent {
     private subscription: Subscription;
-    private goods;
 
     constructor(private goodsService: GoodsService, private activatedRoute:ActivatedRoute, private router: Router) {
         this.subscription = activatedRoute.params.subscribe(params => {
-            this.goods = this.goodsService.getGoodsByCategoriesId(params['categories_id']);
+            this.goodsService.getGoodsByCategoriesId(params['categories_id']);
         });
     }
 }

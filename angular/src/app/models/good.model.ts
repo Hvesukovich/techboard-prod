@@ -1,35 +1,69 @@
 export class GoodModel {
-    public id;
-    public name;
-    public categories_id;
-    public users_id;
-    public title;
-    public description;
-    public text;
-    public video_link;
-    public map;
-    public price;
-    public old_price;
-    public keywords;
-    public show;
-    public created_at;
-    public updated_at;
+    public id = null;
+    public name = null;
+    public categories_id = null;
+    public users_id = null;
+    public title = null;
+    public description = null;
+    public text = null;
+    public video_link = null;
+    public map = null;
+    public price = null;
+    public old_price = null;
+    public keywords = null;
+    public show = null;
+    public created_at = null;
+    public updated_at = null;
 
-    constructor(obj) {
-        this.id = obj['id'];
-        this.name = obj['name'];
-        this.categories_id = obj['categories_id'];
-        this.users_id = obj['users_id'];
-        this.title = obj['title'];
-        this.description = obj['description'];
-        this.text = obj['text'];
-        this.video_link = obj['video_link'];
-        this.map = obj['map'];
-        this.price = obj['price'];
-        this.old_price = obj['old_price'];
-        this.keywords = obj['keywords'];
-        this.show = obj['show'];
-        this.created_at = obj['created_at'];
-        this.updated_at = obj['updated_at'];
+    constructor(obj){
+        this.update(obj);
+    }
+    
+    public update(obj) {
+        if(obj['id']){
+            this.id = obj['id'];
+        }
+        if(obj['name']){
+            this.name = obj['name'];
+        }
+        if(obj['categories_id']){
+            this.categories_id = obj['categories_id'];
+        }
+        if(obj['users_id']){
+            this.users_id = obj['users_id'];
+        }
+        if(obj['title']){
+            this.title = obj['title'];
+        }
+        if(obj['description']){
+            this.description = obj['description'];
+        }
+        if(obj['text']){
+            this.text = obj['text'];
+        }
+        if(obj['video_link']){
+            this.video_link = obj['video_link'];
+        }
+        if(obj['map']){
+            this.map = obj['map'];
+        }
+        if(obj['price']){
+            this.price = obj['price'];
+        }
+        if(obj['old_price']){
+            this.old_price = obj['old_price'];
+        }
+        if(obj['keywords']){
+            this.keywords = obj['keywords'];
+        }
+        if(obj['show']){
+            this.show = obj['show'];
+        }
+        if(obj['created_at']){
+            this.keywords = obj['created_at'];
+        }
+        if(obj['updated_at']){
+            this.keywords = obj['updated_at'];
+        }
     }
 }

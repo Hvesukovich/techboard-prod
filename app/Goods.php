@@ -33,4 +33,8 @@ class Goods extends Model
         )->whereIN('id', $input['arr_idGoods'])->get()->toArray();
     }
 
+    public function getGoodId($input){
+        return $this->select('text')->where('id', '=', $input['id'])->get()->toArray();
+    }
+
 }

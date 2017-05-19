@@ -36,8 +36,19 @@ export class RequestsService {
         return new Promise((resolve, reject) =>{
             var params = new URLSearchParams();
             params.set('arr_idGoods', arr_idGoods);
-
             this.http.post('http://techboard-prod/api/goods-id', params.toString(), { headers: this.headers }).subscribe((data: Response) => {
+                resolve(data.json());
+            }, error => {
+                reject(error);
+            });
+        });
+    }
+
+    public getGoodById(id){
+        return new Promise((resolve, reject) =>{
+            var params = new URLSearchParams();
+            params.set('id', id);
+            this.http.post('http://techboard-prod/api/good-id', params.toString(), { headers: this.headers }).subscribe((data: Response) => {
                 resolve(data.json());
             }, error => {
                 reject(error);

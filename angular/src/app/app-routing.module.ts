@@ -8,7 +8,7 @@ import {GoodComponent} from "./components/good/good.component";
 const ROUTES = [
     {path: '', component: WelcomeUserComponent},
     {path: 'catalog/:categories_id', component: CatalogComponent},
-    // {path: 'good/:id', component: GoodComponent},
+    {path: 'good/:id', component: GoodComponent},
     {path: '**', component: WelcomeUserComponent}
 ];
 

@@ -21,6 +21,8 @@ Route::post('/api/all-goods-ids', 'GoodsController@getAllGoodsIdsJSON');
 Route::get('/api/all-goods-ids', 'GoodsController@getAllGoodsIdsJSON');
 Route::post('/api/goods-id', 'GoodsController@getGoodsIdJSON');
 Route::get('/api/goods-id', 'GoodsController@getGoodsIdJSON');
+Route::post('/api/good-id', 'GoodsController@getGoodIdJSON');
+
 
 Auth::routes();
 

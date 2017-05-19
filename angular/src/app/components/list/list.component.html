@@ -11,7 +11,7 @@
         </div>
         <div id="results-holder" class="results-list-view">
             <!-- Result Item -->
-            <div *ngFor="let value of goods" class="result-item format-standard">
+            <div *ngFor="let value of goodsService.goods" class="result-item format-standard">
                 <div class="result-item-image">
                     <a [routerLink]="'/good/' + value.id" class="media-box"><img
                             src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a>
