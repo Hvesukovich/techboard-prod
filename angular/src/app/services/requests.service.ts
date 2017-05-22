@@ -86,4 +86,23 @@ export class RequestsService {
         });
     }
 
+    public getGoods(ids: number[] = null, fields: string[] = null) {
+        console.log(ids);
+        console.log(fields);
+        let params = new URLSearchParams();
+        if(ids) {
+            params.set('ids', JSON.stringify(ids));
+        }
+        if(fields) {
+            params.set('fields', JSON.stringify(fields));
+        }
+        console.log(params);
+
+
+        this.http.post('http://techboard-prod/api/get-goods', params.toString(), { headers: this.headers }).subscribe((data: Response) => {
+        console.log(data.json());
+            }, error => {
+        });
+    }
+
 }

@@ -14,7 +14,10 @@ export class GoodComponent implements OnInit {
     constructor(private goodsService: GoodsService, private activatedRoute:ActivatedRoute, private router: Router) {
         this.subscription = activatedRoute.params.subscribe(params => {
             this.goodsService.getGoodById(params['id']);
-            // console.log(this.goodsService.good);
+            setTimeout(() => {
+                this.goodsService.getGoodById(params['id']);
+                console.log(this.goodsService.good);
+            }, 1000);
         });
     }
 
@@ -22,7 +25,6 @@ export class GoodComponent implements OnInit {
         
     }
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
 }

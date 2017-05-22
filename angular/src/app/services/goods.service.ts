@@ -7,10 +7,15 @@ export class GoodsService {
 
     private AllGoods:GoodModel[] = [];
     private goods:GoodModel[] = [];
-    private good:GoodModel[] = [];
+    public good:GoodModel = null;
 
 
     constructor(private requestsService:RequestsService) {
+
+    }
+
+    public getAllGoodsIds(): void {
+        this.requestsService.getGoods([1,2,3,4], ['id', 'name']);
     }
 
     public getAllGoodsByIds() {
@@ -64,14 +69,13 @@ export class GoodsService {
     }
 
     public getGoodById(id){
-        this.good = [];
         for (let good of this.AllGoods) {
             if (good['id'] == id) {
                 if (!good['text']) {
                     this.getGoodByIdBD(id);
                 }
-                this.good.push(good);
-                console.log(this.good[0]);
+                this.good = good;
+                console.log(this.good);
             }
         }
     }

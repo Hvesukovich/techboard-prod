@@ -2,11 +2,13 @@
     <div id="content" class="content full">
         <div class="container">
             <!-- Vehicle Details -->
-            <article class="single-vehicle-details">
-                <div *ngIf="goodsService.good">
+            <article class="single-vehicle-details" *ngIf="goodsService.good">
+
+                goodsService.good.name{{goodsService.good.name}}
+                <div>
                     <div class="single-vehicle-title">
                         <span class="badge-premium-listing">Premium listing</span>
-                        <h2 class="post-title">{{goodsService.good[0].name}}</h2>
+                        <h2 class="post-title">{{goodsService.good.name}}</h2>
                     </div>
                     <div class="single-listing-actions">
                         <div class="btn-group pull-right" role="group">
@@ -21,7 +23,7 @@
                                     title="Print"><i
                                     class="fa fa-print"></i> <span>Print</span></button>
                         </div>
-                        <div class="btn btn-info price">{{goodsService.good[0].price}}</div>
+                        <div class="btn btn-info price">{{goodsService.good.price}}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-8">
@@ -36,13 +38,13 @@
                         <div class="col-md-4 vehicle-details-sidebar sidebar">
                             <div class="sidebar-widget widget">
                                 <ul class="list-group">
-                                    <li class="list-group-item"><span class="badge">ID</span>{{goodsService.good[0].id}}</li>
-                                    <li class="list-group-item"><span class="badge">Название</span>{{goodsService.good[0].name}}</li>
-                                    <!--<li class="list-group-item"><span class="badge">id каталога</span>{{goodsService.good[0].categories_id)}}-->
+                                    <!--<li class="list-group-item"><span class="badge">ID</span>{{goodsService.good.id}}</li>-->
+                                    <li class="list-group-item"><span class="badge">Название</span>{{goodsService.good.name}}</li>
+                                    <!--<li class="list-group-item"><span class="badge">id каталога</span>{{goodsService.good.categories_id)}}-->
                                     <!--</li>-->
 
-                                    <li class="list-group-item"><span class="badge">Цена</span>{{goodsService.good[0].price}}</li>
-                                    <li class="list-group-item"><span class="badge">Старая цена</span>{{goodsService.good[0].old_price}}
+                                    <li class="list-group-item"><span class="badge">Цена</span>{{goodsService.good.price}}</li>
+                                    <li class="list-group-item"><span class="badge">Старая цена</span>{{goodsService.good.old_price}}
                                     </li>
                                 </ul>
                             </div>
@@ -66,7 +68,7 @@
                                 </ul>
                                 <div class="tab-content">
                                     <div id="vehicle-overview" class="tab-pane fade in active">
-                                        {{goodsService.good[0].text}}
+                                        {{goodsService.good.text}}
                                     </div>
                                     <!--<div id="vehicle-specs" class="tab-pane fade">-->
                                         <!--<div class="accordion" id="toggleArea">-->

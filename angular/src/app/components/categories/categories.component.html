@@ -3,7 +3,7 @@
     <h3>Каталог</h3>
     <div class="accordion" id="toggleArea">
       <!-- Filter by Year -->
-      <div class="accordion-group panel" *ngFor="let value of categories">
+      <div class="accordion-group panel" *ngFor="let value of categoriesService.categories">
         <div class="accordion-heading togglize">
           <a [routerLink]="'/catalog/' + value.id" class="accordion-toggle">
             {{value.name}}

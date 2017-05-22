@@ -8,13 +8,8 @@ import {CategoriesService} from "../../services/categories.service";
 })
 
 export class CategoriesComponent {
+    constructor() {
 
-    private categories;
-    
-    constructor(private categoriesService:CategoriesService) { 
-        this.categoriesService.getAllCategories().then((categories)=>{
-            this.categories = categories;
-        });
     }
 
 }

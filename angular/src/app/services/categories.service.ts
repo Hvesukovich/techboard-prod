@@ -4,9 +4,7 @@ import {CategoryModel} from "../models/categories.model";
 
 @Injectable()
 export class CategoriesService {
-    
-
-    private categories: CategoryModel[] = null;
+    public categories: CategoryModel[] = null;
     
     constructor(private requestsService: RequestsService) { }
 
