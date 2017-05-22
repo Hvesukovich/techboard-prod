@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {RequestsService} from "../../services/requests.service";
+import {UsersService} from "../../services/users.service";
 
 @Component({
   selector: 'app-header',
@@ -8,23 +8,25 @@ import {RequestsService} from "../../services/requests.service";
 })
 export class HeaderComponent implements OnInit {
 
-    public name: string;
-    public email: string;
-    public phone: string;
-    public password: string;
-    public confirmPassword: string;
-
-  constructor(private requestsService: RequestsService) {
+  constructor(private usersService: UsersService) {
   }
 
   ngOnInit() {
   }
 
     public createUser(name: string, email: string, phone: string, password: string, confirmPassword: string){
-        // console.log(name + '; ' + email + '; ' + phone + '; ' + password + '; ' + confirmPassword + ';');
         if(password === confirmPassword){
-            // this.requestsService.registrationUser(name, email, phone, password);
             console.log(name + '; ' + email + '; ' + phone + '; ' + password + '; ' + confirmPassword + ';');
+            this.usersService.createUser(name, email, phone, password);
         }
+    }
+
+    public openUser(username, userpassword){
+        console.log(username + '; ' + userpassword + ';');
+        this.usersService.openUser(username, userpassword);
+    }
+    
+    public exitUser(){
+        this.usersService.exitUser();
     }
 }

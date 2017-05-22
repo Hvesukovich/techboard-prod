@@ -11,9 +11,10 @@
                 </div>
                 <div class="topnav dd-menu">
                     <ul class="top-navigation sf-menu">
-                        <li><a href="#" data-toggle="modal" data-target="#loginModal">Вход</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#registrationModal">Регистрация</a></li>
-                        <!--<li><a [routerLink]="'/user-registration'">Регистрация</a></li>-->
+                        <li *ngIf="!usersService.user"><a href="#" data-toggle="modal" data-target="#loginModal">Вход</a></li>
+                        <li *ngIf="!usersService.user"><a href="#" data-toggle="modal" data-target="#registrationModal">Регистрация</a></li>
+                        <li *ngIf="usersService.user"><a href="#" (click)="exitUser()">Выход</a></li>
+
                     </ul>
                 </div>
             </div>

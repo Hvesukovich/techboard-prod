@@ -56,4 +56,34 @@ export class RequestsService {
         });
     }
 
+    public createUser(name, email, phone, password){
+        return new Promise((resolve, reject) =>{
+            var params = new URLSearchParams();
+            params.set('name', name);
+            params.set('email', email);
+            params.set('phone', phone);
+            params.set('password', password);
+            
+            this.http.post('http://techboard-prod/api/create-user', params.toString(), { headers: this.headers }).subscribe((data: Response) => {
+                resolve(data.json());
+            }, error => {
+                reject(error);
+            });
+        });
+    }
+
+    public openUser(username, userpassword){
+        return new Promise((resolve, reject) =>{
+            var params = new URLSearchParams();
+            params.set('username', username);
+            params.set('userpassword', userpassword);
+
+            this.http.post('http://techboard-prod/api/open-user', params.toString(), { headers: this.headers }).subscribe((data: Response) => {
+                resolve(data.json());
+            }, error => {
+                reject(error);
+            });
+        });
+    }
+
 }

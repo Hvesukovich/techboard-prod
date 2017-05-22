@@ -22,6 +22,9 @@ Route::get('/api/all-goods-ids', 'GoodsController@getAllGoodsIdsJSON');
 Route::post('/api/goods-id', 'GoodsController@getGoodsIdJSON');
 Route::get('/api/goods-id', 'GoodsController@getGoodsIdJSON');
 Route::post('/api/good-id', 'GoodsController@getGoodIdJSON');
+Route::post('/api/create-user', 'UsersController@createUser');
+Route::post('/api/open-user', 'UsersController@openUser');
+Route::get('/api/open-user', 'UsersController@openUser');
 
 
 Auth::routes();
