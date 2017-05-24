@@ -109,6 +109,7 @@ export class RequestsService {
     public editGood(user_id, id, name, category, description, text, video_link, map, price, title, keywords, show){
         return new Promise((resolve, reject) => {
             var params = new URLSearchParams();
+            console.log('show: ' + show);
             params.set('id', id);
             params.set('name', name);
             params.set('categories_id', category);
@@ -123,8 +124,7 @@ export class RequestsService {
             params.set('show', show);
 
 
-            this.http.post('http://techboard/api/good-edit', params.toString(), { headers: this.headers }).subscribe((data:Response) => {
-                console.log(data);
+            this.http.post('http://techboard-prod/api/good-edit', params.toString(), { headers: this.headers }).subscribe((data: Response) => {
                 resolve(data.json());
             }, error => {
                 reject(error);

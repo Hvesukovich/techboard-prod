@@ -70,7 +70,6 @@ class GoodsController extends Controller
         $goodsResponse = $Goods->editGoodAndGetGoodJSON($input);
         return response()
             ->json($goodsResponse)
-//            ->json($input)
             ->header('Access-Control-Allow-Origin', '*')
             ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
             ->header('Access-Control-Max-Age', '1000')

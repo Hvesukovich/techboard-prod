@@ -60,10 +60,10 @@ export class GoodModel {
             this.show = obj['show'];
         }
         if(obj['created_at']){
-            this.keywords = obj['created_at'];
+            this.created_at = obj['created_at'];
         }
         if(obj['updated_at']){
-            this.keywords = obj['updated_at'];
+            this.updated_at = obj['updated_at'];
         }
     }
 }
