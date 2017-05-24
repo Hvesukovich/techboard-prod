@@ -8,7 +8,7 @@ import {CategoriesService} from "../../services/categories.service";
 })
 
 export class CategoriesComponent {
-    constructor() {
+    constructor(private categoriesService: CategoriesService) {
 
     }
 
