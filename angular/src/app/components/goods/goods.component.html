@@ -5,14 +5,19 @@
 
 
         <div *ngFor="let category of categoriesService.categories">
-            {{category.name}}
-
+            <div class="row form-group">
+                <div class="col-xs-6">
+                    <h4>{{category.name}}</h4>
+                </div>
+                <div class="col-xs-6">
+                    <a [routerLink]="'/user-editing-an-ad/' + category.id" class="btn btn-success pull-right btn-sm">Создать товар в котегории "{{category.name}}"</a>
+                </div>
+            </div>
 
             <div class="table-responsive">
                 <table class="table table-bordered dashboard-tables saved-cars-table">
                     <thead>
                     <tr>
-                        <td>&nbsp;</td>
                         <td>Описание</td>
                         <td>Цена/Отображение</td>
                         <td>Создано/отредактированно</td>
@@ -23,7 +28,6 @@
                     <!--<div *ngFor="let good of goodsService.goods">-->
                         <!--<tr *ngIf="category.id == good.categories_id">-->
                         <tr *ngFor="let good of goodsService.goods">
-                            <td *ngIf="category.id == good.categories_id" valign="middle"><input type="checkbox"></td>
                             <td *ngIf="category.id == good.categories_id">
                                 <!-- Result -->
                                 <a [routerLink]="'/good/' + good.id" class="car-image"><img
@@ -52,8 +56,5 @@
 
 
         </div>
-
-
-        <button class="btn btn-default btn-sm disabled">Delete Selected</button>
     </div>
 </div>
