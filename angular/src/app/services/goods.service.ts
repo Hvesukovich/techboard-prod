@@ -76,7 +76,7 @@ export class GoodsService {
                     this.getGoodByIdBD(id);
                 }
                 this.good = good;
-                console.log(this.good);
+                // console.log(this.good);
             }
         }
     }
@@ -92,8 +92,7 @@ export class GoodsService {
             }
         });
     }
-
-    //Правлю
+    
     public getGoodsByUserId() {
         this.goods = [];
         let arr_idGoods = [];
@@ -110,4 +109,9 @@ export class GoodsService {
         }
     }
 
+    public editGood(id, name, category, description, text, video_link, map, price, title, keywords, show){
+        console.log(
+            id + ', ' + name + ', ' + category + ', ' + description + ', ' + text + ', ' + video_link + ', ' + map + ', ' + price + ', ' + title + ', ' + keywords + ', ' + show
+        );
+    }
 }

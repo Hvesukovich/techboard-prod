@@ -41,7 +41,7 @@
                             <td *ngIf="category.id == good.categories_id"><span class="text-success">{{good.created_at}}/{{good.updated_at}}</span></td>
                             <td *ngIf="category.id == good.categories_id" align="center">
                                 <button class="text-default" title="Редактировать">
-                                    <a [routerLink]="'/user-editing-an-ad/' + good.id"><i class="fa fa-pencil"></i></a>
+                                    <a [routerLink]="'/user-editing-an-ad/' + category.id + '/' + good.id"><i class="fa fa-pencil"></i></a>
                                 </button>
                                 <button class="text-danger" title="Удалить" (click)="delGood(good.id)"><i
                                         class="fa fa-trash"

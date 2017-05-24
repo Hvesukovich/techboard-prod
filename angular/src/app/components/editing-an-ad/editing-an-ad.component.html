@@ -1,21 +1,21 @@
 <div class="col-md-9 col-sm-8">
   <!--editGood(name, category, description, text, video_link, map, price)-->
   <form method="post" name="form" id="form"
-        (ngSubmit)="f.form.valid && editGood(name, category, description, text, video_link, map, price, title)" #f="ngForm"
+        (ngSubmit)="editingGood.form.valid && editGood(name, category, description, text, video_link, map, price, title, keywords, show)" #editingGood="ngForm"
         novalidate>
     <h2>{{blockName}}</h2>
-    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !nameGood.valid }">
+    <div class="form-group" [ngClass]="{ 'has-error': editingGood.submitted && !nameGood.valid }">
       <label for="nameGood">Название товара*</label>
       <input type="text" id="nameGood" name="nameGood" class="form-control" placeholder="Название товара" required [(ngModel)]="name" #nameGood="ngModel">
-      <div *ngIf="f.submitted && !nameGood.valid" class="help-block">Введите название товара</div>
+      <div *ngIf="editingGood.submitted && !nameGood.valid" class="help-block">Введите название товара</div>
     </div>
-    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !nameCategory.valid }">
+    <div class="form-group" [ngClass]="{ 'has-error': editingGood.submitted && !nameCategory.valid }">
       <label for="nameCategory">Категория*</label>
       <select id="nameCategory" name="nameCategory" class="form-control" required [(ngModel)]="category" #nameCategory="ngModel">
         <option></option>
-        <option *ngFor="let value of catalog" [ngValue]="value.id">{{value.name}}</option>
+        <option *ngFor="let value of categoriesService.categories" [ngValue]="value.id">{{value.name}}</option>
       </select>
-      <div *ngIf="f.submitted && !nameCategory.valid" class="help-block">Укажите категорию</div>
+      <div *ngIf="editingGood.submitted && !nameCategory.valid" class="help-block">Укажите категорию</div>
     </div>
     <div class="form-group">
       <label for="description-good">Краткое описание товара</label>
@@ -48,55 +48,14 @@
       <label for="title-good">Укажите title для продвижения товара.</label>
       <textarea id="title-good" name="title-good" class="form-control" rows="3" placeholder="title для продвижения товара. При отстутсвии title он будет собираться автоматически из названий категории и товара " [(ngModel)]="title"></textarea>
     </div>
+    <div class="form-group">
+      <label for="keywords-good">Укажите keywords.</label>
+      <textarea id="keywords-good" name="keywords-good" class="form-control" rows="3" placeholder="keywords" [(ngModel)]="keywords"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="show-good">Отображение товара на сайте</label>
+      <input type="checkbox" id="show-good" name="show-good" class="form-control" [(ngModel)]="show">
+    </div>
     <button type="submit" [disabled]="loading" class="btn btn-info">{{buttonSaveName}}</button>
   </form>
-
-  <!--<form method="post" name="form" id="form"-->
-  <!--(ngSubmit)="w.form.valid && editGood(name, category, description, text, video_link, map, price)" #w="ngForm"-->
-  <!--novalidate>-->
-  <!--<h2>Создание/ редактирование товара</h2>-->
-  <!--<div class="form-group" [ngClass]="{ 'has-error': w.submitted && !nameGood.valid }">-->
-  <!--<label for="nameGood">Название товара*</label>-->
-  <!--<input type="text" id="nameGood" name="nameGood" class="form-control" placeholder="Название товара" required [(ngModel)]="name" #nameGood="ngModel">-->
-  <!--<div *ngIf="w.submitted && !nameGood.valid" class="help-block">Введите название товара</div>-->
-  <!--</div>-->
-  <!--<div class="form-group" [ngClass]="{ 'has-error': w.submitted && !nameCategory.valid }">-->
-  <!--<label for="nameCategory">Категория*</label>-->
-  <!--<select id="nameCategory" name="nameCategory" class="form-control" required [(ngModel)]="category" #nameCategory="ngModel">-->
-  <!--<option></option>-->
-  <!--<option value="Beige">Эксковаторы</option>-->
-  <!--<option value="Black">Трактора</option>-->
-  <!--</select>-->
-  <!--<div *ngIf="w.submitted && !nameCategory.valid" class="help-block">Укажите категорию</div>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-  <!--<label for="description-good">Краткое описание товара*</label>-->
-  <!--<textarea id="description-good" name="description-good" class="form-control" rows="3" placeholder="Краткое описание товара" [(ngModel)]="description"></textarea>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-  <!--<label for="text-good">Подробное описание товара*</label>-->
-  <!--<textarea id="text-good" name="text-good" class="form-control" rows="10" placeholder="Подробное описание товара" [(ngModel)]="text"></textarea>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-  <!--<label for="video_link">Ссылка на видео</label>-->
-  <!--<input type="text" id="video_link" name="video_link" class="form-control" placeholder="Ссылка на видео" required [(ngModel)]="video_link">-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-  <!--<label for="map-good">Координаты нахождения товара на карте</label>-->
-  <!--<textarea id="map-good" name="map-good" class="form-control" rows="3" placeholder="Координаты нахождения товара на карте" [(ngModel)]="map"></textarea>-->
-  <!--</div>-->
-  <!--<div class="panel panel-info price-suggestion">-->
-  <!--<div class="panel-heading">-->
-  <!--<h3 class="panel-title">Укажите цену на товар</h3>-->
-  <!--</div>-->
-  <!--<div class="panel-body">-->
-  <!--<div class="input-group">-->
-  <!--<input type="text" name="price" class="form-control" placeholder="Цены: от 20000 до 28000 BYN." [(ngModel)]="price">-->
-  <!--<span class="input-group-addon">BYN</span>-->
-  <!--</div>-->
-  <!--<p class="small">Цены: от 20000 до 28000 BYN.</p>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--<button type="submit" [disabled]="loading" class="btn btn-info">Сохранить</button>-->
-  <!--</form>-->
 </div>
