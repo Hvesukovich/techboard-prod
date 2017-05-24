@@ -113,7 +113,9 @@ export class GoodsService {
         // console.log(
         //     id + ', ' + name + ', ' + category + ', ' + description + ', ' + text + ', ' + video_link + ', ' + map + ', ' + price + ', ' + title + ', ' + keywords + ', ' + show
         // );
-        this.requestsService.editGood(id, name, category, description, text, video_link, map, price, title, keywords, show).then((good) => {
+        
+        let user_id = this.usersService.user;
+        this.requestsService.editGood(user_id, id, name, category, description, text, video_link, map, price, title, keywords, show).then((good) => {
             console.log(good);
             // if(id){
             //     for (let value of this.AllGoods) {

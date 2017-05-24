@@ -52,7 +52,7 @@ class GoodsController extends Controller
     
     public function editGoodAndGetGoodJSON(){
         $input = \Request::all();
-//        $input['id'] ='8';
+//        $input['id'] ='2';
 //        $input['name'] ='MTZ-82';
 //        $input['categories_id'] ='1';
 //        $input['description'] ='MTZ-82 «Белорус»';
