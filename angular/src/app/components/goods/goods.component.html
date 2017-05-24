@@ -1,3 +1,63 @@
-<p>
-  goods works!
-</p>
+<div class="col-md-9 col-sm-8">
+    <h2>Мои объявления</h2>
+    <p>В данном разделе выможете ознакомиться со своими объявлениями, а так же отредактировать их.</p>
+    <div class="dashboard-block">
+
+
+        <div *ngFor="let value of categoriesService.categories">
+            {{value.name}}
+
+            <div class="table-responsive">
+                <table class="table table-bordered dashboard-tables saved-cars-table">
+                    <thead>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>Description</td>
+                        <td>Price/Status</td>
+                        <td>Timestamp</td>
+                        <td>Payment</td>
+                        <td>Actions</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let value of goods">
+                        <td valign="middle"><input type="checkbox"></td>
+                        <td>
+                            <!-- Result -->
+                            <a href="vehicle-details.html" class="car-image"><img
+                                    src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a>
+                            <div class="search-find-results">
+                                <h5><a href="vehicle-details.html">{{value.name}}</a></h5>
+                                <ul class="inline">
+                                    <li>2 door Coupe</li>
+                                    <li>6 cyl, 3.0 L Petrol</li>
+                                    <li>6 speed Automatic</li>
+                                    <li>Rear Wheel Drive</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td><span class="price">{{value.price}}</span></td>
+                        <td><span class="text-success">Created on</span> 09/12/14 @ 12:09am</td>
+                        <td align="center"><span class="label label-warning">Pending payment</span></td>
+                        <td align="center">
+                            <button class="text-default" title="Редактировать">
+                                <a [routerLink]="'/user-editing-an-ad/' + value.id"><i class="fa fa-pencil"></i></a>
+                            </button>
+                            <button class="text-danger" title="Удалить" (click)="delGood(value.id)"><i class="fa fa-trash"
+                                                                                                       aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+
+
+
+        <button class="btn btn-default btn-sm disabled">Delete Selected</button>
+    </div>
+</div>

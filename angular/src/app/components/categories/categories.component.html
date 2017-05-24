@@ -1,15 +1,15 @@
 <div class="col-md-3 search-filters" id="Search-Filters">
-  <div class="tbsticky filters-sidebar">
-    <h3>Каталог</h3>
-    <div class="accordion" id="toggleArea">
-      <!-- Filter by Year -->
-      <div class="accordion-group panel" *ngFor="let value of categoriesService.categories">
-        <div class="accordion-heading togglize">
-          <a [routerLink]="'/catalog/' + value.id" class="accordion-toggle">
-            {{value.name}}
-          </a>
+    <div class="tbsticky filters-sidebar">
+        <h3>Каталог</h3>
+        <div class="accordion" id="toggleArea">
+            <!-- Filter by Year -->
+            <div class="accordion-group panel" *ngFor="let value of categoriesService.categories">
+                <div class="accordion-heading togglize">
+                    <a [routerLink]="'/catalog/' + value.id" class="accordion-toggle">
+                        {{value.name}}
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
