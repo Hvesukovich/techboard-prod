@@ -3,7 +3,8 @@ import {RequestsService} from "./requests.service";
 
 @Injectable()
 export class UsersService {
-    user: string;
+    user:string;
+    // user:string = '1';
 
   constructor(private requestsService:RequestsService) {
   }
@@ -21,8 +22,8 @@ export class UsersService {
     public openUser(username, userpassword){
         return new Promise((resolve, reject) => {
             this.requestsService.openUser(username, userpassword).then((user)=>{
-                this.user = user[0].email;
-                // console.log(this.user);
+                this.user = user[0].id;
+                console.log(this.user);
             });
         });
     }

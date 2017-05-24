@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {RequestsService} from "./requests.service";
 import {GoodModel} from "../models/good.model";
+import {UsersService} from "./users.service";
 
 @Injectable()
 export class GoodsService {
@@ -10,7 +11,7 @@ export class GoodsService {
     public good:GoodModel = null;
 
 
-    constructor(private requestsService:RequestsService) {
+    constructor(private requestsService:RequestsService, private usersService: UsersService) {
 
     }
 
@@ -90,6 +91,24 @@ export class GoodsService {
                 }
             }
         });
+    }
+
+    //Правлю
+    public getGoodsByUserId() {
+        this.goods = [];
+        let arr_idGoods = [];
+        for (let good of this.AllGoods) {
+            if (good['users_id'] == this.usersService.user) {
+                if (!good['name']) {
+                    arr_idGoods.push(good['id']);
+                }
+                this.goods.push(good);
+            }
+        }
+        if (arr_idGoods.length) {
+            this.getGoodsById(arr_idGoods);
+        }
+        console.log(this.goods);
     }
 
 }

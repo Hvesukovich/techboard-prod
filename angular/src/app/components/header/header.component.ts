@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
     }
 
     public openUser(username, userpassword){
-        console.log(username + '; ' + userpassword + ';');
         this.usersService.openUser(username, userpassword);
     }
     

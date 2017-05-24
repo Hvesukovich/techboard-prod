@@ -11,6 +11,7 @@ const ROUTES = [
     {path: 'catalog/:categories_id', component: CatalogComponent},
     {path: 'good/:id', component: GoodComponent},
     {path: 'user-goods', component: UserGoodsComponent},
+    {path: 'user-editing-an-ad', component: UserGoodsComponent},
     {path: '**', component: WelcomeUserComponent}
 ];
 
