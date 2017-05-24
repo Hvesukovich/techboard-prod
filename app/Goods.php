@@ -34,7 +34,7 @@ class Goods extends Model
     }
 
     public function getGoodId($input){
-        return $this->select('text')->where('id', '=', $input['id'])->get()->toArray();
+        return $this->where('id', '=', $input['id'])->get()->toArray();
     }
 
 }
