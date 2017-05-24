@@ -37,4 +37,21 @@ class Goods extends Model
         return $this->where('id', '=', $input['id'])->get()->toArray();
     }
 
+    public function editGoodAndGetGoodJSON($input){
+        if(isset($input['id'])){
+            $this->find($input['id'])->update($input);//Редактирование только по ID
+            return $this->where('updated_at', '=', $this->max('updated_at'))->get()->toArray();
+        }
+        else
+        {
+            $this->create([
+                'name' => $input['name'], 'categories_id' => $input['categories_id'],'users_id' => $input['users_id'],
+                'title' => $input['title'], 'description' => $input['description'], 'text' => $input['text'],
+                'video_link' => $input['video_link'], 'map' => $input['map'], 'price' => $input['price'],
+                'keywords' => $input['keywords'], 'show' => $input['show']
+            ]);
+            return $this->where('created_at', '=', $this->max('created_at'))->get()->toArray();
+        }
+    }
+
 }

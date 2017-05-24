@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http, Response, Headers, URLSearchParams} from "@angular/http";
+import {UsersService} from "./users.service";
 
 @Injectable()
 export class RequestsService {
@@ -8,7 +9,7 @@ export class RequestsService {
         'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private usersService: UsersService) { }
 
     public getAllCategories(): Promise<object[]> {
         return new Promise((resolve, reject) =>{
@@ -87,8 +88,8 @@ export class RequestsService {
     }
 
     public getGoods(ids: number[] = null, fields: string[] = null) {
-        console.log(ids);
-        console.log(fields);
+        // console.log(ids);
+        // console.log(fields);
         let params = new URLSearchParams();
         if(ids) {
             params.set('ids', JSON.stringify(ids));
@@ -103,6 +104,33 @@ export class RequestsService {
         console.log(data.json());
             }, error => {
         });
+    }
+
+
+    public editGood(id, name, category, description, text, video_link, map, price, title, keywords, show){
+        return new Promise((resolve, reject) => {
+            var params = new URLSearchParams();
+            params.set('id', id);
+            params.set('name', name);
+            params.set('catalog_id', category);
+            params.set('user_id', this.usersService.user);
+            params.set('description', description);
+            params.set('text', text);
+            params.set('video_link', video_link);
+            params.set('map', map);
+            params.set('price', price);
+            params.set('title', title);
+            params.set('keywords', keywords);
+            params.set('show', show);
+
+            this.http.post('http://techboard/api/good-edit', params.toString(), { headers: this.headers }).subscribe((data:Response) => {
+                resolve(data.json());
+            }, error => {
+                console.log(error);
+                reject(error);
+            });
+        })
+
     }
 
 }

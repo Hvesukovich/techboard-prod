@@ -110,8 +110,35 @@ export class GoodsService {
     }
 
     public editGood(id, name, category, description, text, video_link, map, price, title, keywords, show){
-        console.log(
-            id + ', ' + name + ', ' + category + ', ' + description + ', ' + text + ', ' + video_link + ', ' + map + ', ' + price + ', ' + title + ', ' + keywords + ', ' + show
-        );
+        // console.log(
+        //     id + ', ' + name + ', ' + category + ', ' + description + ', ' + text + ', ' + video_link + ', ' + map + ', ' + price + ', ' + title + ', ' + keywords + ', ' + show
+        // );
+        this.requestsService.editGood(id, name, category, description, text, video_link, map, price, title, keywords, show).then((good) => {
+            console.log(good);
+            // if(id){
+            //     for (let value of this.AllGoods) {
+            //         if (value['id'] == id) {
+            //             // value['name'] = name;
+            //             // value['category'] = category;
+            //             // value['description'] = description;
+            //             // value['text'] = text;
+            //             // value['video_link'] = video_link;
+            //             // value['map'] = map;
+            //             // value['price'] = price;
+            //             // value['title'] = title;
+            //             // value['keywords'] = keywords;
+            //             // value['show'] = show;
+            //
+            //             value.update(good[0]);
+            //             break;
+            //
+            //             //  Дату надо както тож будет обновить, но как лучше не знаю
+            //         }
+            //     }
+            // }else {
+            //     this.AllGoods.push(good[0]);
+            // }
+        });
+        
     }
 }
