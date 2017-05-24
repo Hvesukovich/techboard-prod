@@ -3,8 +3,8 @@ import {RequestsService} from "./requests.service";
 
 @Injectable()
 export class UsersService {
-    user:string;
-    // user:string = '1';
+    // user:string;
+    user:string = '1';
 
   constructor(private requestsService:RequestsService) {
   }

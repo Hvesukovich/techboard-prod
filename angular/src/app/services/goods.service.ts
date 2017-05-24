@@ -108,7 +108,6 @@ export class GoodsService {
         if (arr_idGoods.length) {
             this.getGoodsById(arr_idGoods);
         }
-        console.log(this.goods);
     }
 
 }

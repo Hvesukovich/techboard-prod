@@ -14,7 +14,7 @@
                     <tr>
                         <td>&nbsp;</td>
                         <td>Описание</td>
-                        <td>Цена/Status</td>
+                        <td>Цена/Отображение</td>
                         <td>Создано/отредактированно</td>
                         <td>Действия</td>
                     </tr>
@@ -26,15 +26,15 @@
                             <td *ngIf="category.id == good.categories_id" valign="middle"><input type="checkbox"></td>
                             <td *ngIf="category.id == good.categories_id">
                                 <!-- Result -->
-                                <a href="vehicle-details.html" class="car-image"><img
+                                <a [routerLink]="'/good/' + good.id" class="car-image"><img
                                         src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a>
                                 <div class="search-find-results">
-                                    <h5><a href="vehicle-details.html">{{good.name}}</a></h5>
+                                    <h5><a [routerLink]="'/good/' + good.id">{{good.name}}</a></h5>
                                     <span>{{good.description}}</span>
                                 </div>
                             </td>
-                            <td *ngIf="category.id == good.categories_id"><span class="price">{{good.price}}</span></td>
-                            <td *ngIf="category.id == good.categories_id"><span class="text-success">Созданно</span>{{good.created_at}}</td>
+                            <td *ngIf="category.id == good.categories_id"><span class="price">{{good.price}}/{{good.show}}</span></td>
+                            <td *ngIf="category.id == good.categories_id"><span class="text-success">{{good.created_at}}/{{good.updated_at}}</span></td>
                             <td *ngIf="category.id == good.categories_id" align="center">
                                 <button class="text-default" title="Редактировать">
                                     <a [routerLink]="'/user-editing-an-ad/' + good.id"><i class="fa fa-pencil"></i></a>

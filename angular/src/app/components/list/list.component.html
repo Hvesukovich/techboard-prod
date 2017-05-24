@@ -12,43 +12,46 @@
         <div id="results-holder" class="results-list-view">
             <!-- Result Item -->
             <div *ngFor="let value of goodsService.goods" class="result-item format-standard">
-                <div class="result-item-image">
-                    <a [routerLink]="'/good/' + value.id" class="media-box"><img
-                            src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a>
-                </div>
-                <div class="result-item-in">
-                    <h4 class="result-item-title"><a [routerLink]="'/' + 'good' + '/' + value.id">{{value.name}}</a>
-                    </h4>
-                    <div class="result-item-cont">
-                        <!--<div class="result-item-pricing left-block">-->
+                <div *ngIf="value.show == 1">
+                    <div class="result-item-image">
+                        <a [routerLink]="'/good/' + value.id" class="media-box"><img
+                                src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a>
+                    </div>
+                    <div class="result-item-in">
+                        <h4 class="result-item-title"><a [routerLink]="'/' + 'good' + '/' + value.id">{{value.name}}</a>
+                        </h4>
+                        <div class="result-item-cont">
+                            <!--<div class="result-item-pricing left-block">-->
                             <!--<div class="price">{{value.price}}€</div>-->
-                        <!--</div>-->
-                        <!--<div class="result-item-action-buttons right-block">-->
+                            <!--</div>-->
+                            <!--<div class="result-item-action-buttons right-block">-->
                             <!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-star-o"></i> Save</a>-->
-                        <!--</div>-->
-                        <div class="result-item-block col2">
-                            <div class="result-item-pricing">
-                                <div class="price">{{value.price}}€</div>
+                            <!--</div>-->
+                            <div class="result-item-block col2">
+                                <div class="result-item-pricing">
+                                    <div class="price">{{value.price}}€</div>
+                                </div>
+                                <div class="result-item-action-buttons">
+                                    <a href="#" class="btn btn-default btn-sm"><i class="fa fa-star-o"></i> Save</a>
+                                </div>
                             </div>
-                            <div class="result-item-action-buttons">
-                                <a href="#" class="btn btn-default btn-sm"><i class="fa fa-star-o"></i> Save</a>
-                            </div>
-                        </div>
-                        <!--<div class="result-item-block col1">-->
+                            <!--<div class="result-item-block col1">-->
                             <!--<div class="result-item-pricing">-->
-                                <!--<div class="price">{{value.price}}€</div>-->
+                            <!--<div class="price">{{value.price}}€</div>-->
                             <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="result-item-block col2">-->
+                            <!--</div>-->
+                            <!--<div class="result-item-block col2">-->
                             <!--<div class="result-item-action-buttons">-->
-                                <!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-star-o"></i> Save</a>-->
+                            <!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-star-o"></i> Save</a>-->
                             <!--</div>-->
-                        <!--</div>-->
-                    </div>
-                    <div class="result-item-features">
-                        <p>{{value.description}}</p>
+                            <!--</div>-->
+                        </div>
+                        <div class="result-item-features">
+                            <p>{{value.description}}</p>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
