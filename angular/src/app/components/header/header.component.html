@@ -7,7 +7,7 @@
             </div>
             <div class="header-right">
                 <div class="user-login-panel">
-                    <a href="#" class="user-login-btn" data-toggle="modal" data-target="#loginModal"><i class="icon-profile"></i></a>
+                    <a *ngIf="usersService.user" [routerLink]="'/user-goods'" class="user-login-btn"><i class="icon-profile"></i></a>
                 </div>
                 <div class="topnav dd-menu">
                     <ul class="top-navigation sf-menu">
