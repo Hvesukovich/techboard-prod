@@ -48,7 +48,7 @@ class Goods extends Model
                 'name' => $input['name'], 'categories_id' => $input['categories_id'],'users_id' => $input['users_id'],
                 'title' => $input['title'], 'description' => $input['description'], 'text' => $input['text'],
                 'video_link' => $input['video_link'], 'map' => $input['map'], 'price' => $input['price'],
-                'keywords' => $input['keywords'], 'show' => $input['show']
+                'keywords' => $input['keywords']
             ]);
             return $this->where('created_at', '=', $this->max('created_at'))->get()->toArray();
         }

@@ -110,6 +110,12 @@ export class RequestsService {
         return new Promise((resolve, reject) => {
             var params = new URLSearchParams();
             console.log('show: ' + show);
+            if(show == false || show == undefined){
+                show = false;
+            }else{
+                show = true;
+            }
+            console.log('show: ' + show);
             params.set('id', id);
             params.set('name', name);
             params.set('categories_id', category);
