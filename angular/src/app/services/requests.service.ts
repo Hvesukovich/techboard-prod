@@ -109,13 +109,13 @@ export class RequestsService {
     public editGood(user_id, id, name, category, description, text, video_link, map, price, title, keywords, show){
         return new Promise((resolve, reject) => {
             var params = new URLSearchParams();
-            console.log('show: ' + show);
-            if(show == false || show == undefined){
-                show = false;
-            }else{
-                show = true;
-            }
-            console.log('show: ' + show);
+            // console.log('show: ' + show);
+            // if(show == false || show == undefined){
+            //     show = 0;
+            // }else{
+            //     show = 1;
+            // }
+            // console.log('show: ' + show);
             params.set('id', id);
             params.set('name', name);
             params.set('categories_id', category);
@@ -136,7 +136,19 @@ export class RequestsService {
                 reject(error);
             });
         })
-
     }
 
+    public delGood(id) {
+        return new Promise((resolve, reject) => {
+            var params = new URLSearchParams();
+            params.set('id', id);
+
+            this.http.post('http://techboard-prod/api/good-del', params.toString(), { headers: this.headers }).subscribe((data:Response) => {
+                resolve(data.json());
+            }, error => {
+                console.log(error);
+                reject(error);
+            });
+        })
+    }
 }

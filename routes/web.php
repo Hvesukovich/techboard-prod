@@ -27,6 +27,8 @@ Route::post('/api/open-user', 'UsersController@openUser');
 Route::get('/api/open-user', 'UsersController@openUser');
 Route::post('/api/good-edit', 'GoodsController@editGoodAndGetGoodJSON');
 Route::get('/api/good-edit', 'GoodsController@editGoodAndGetGoodJSON');
+Route::post('/api/good-del', 'GoodsController@delGoodById');
+Route::get('/api/good-del', 'GoodsController@delGoodById');
 
 
 Auth::routes();

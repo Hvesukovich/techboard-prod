@@ -24,6 +24,11 @@ export class GoodsComponent implements OnInit {
         });
     }
 
+    delGood(id) {
+        console.log('Это id удаляемого товара: ' + id);
+        this.goodsService.delGood(id);
+    }
+
     ngOnInit() {
     }
 

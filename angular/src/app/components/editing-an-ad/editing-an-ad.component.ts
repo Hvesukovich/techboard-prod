@@ -35,10 +35,8 @@ export class EditingAnAdComponent implements OnInit {
     {
         this.subscription = activatedRoute.params.subscribe(params => {
             if(params['categories_id'] && !params['good_id']) {
-                setTimeout(() => {
-                    this.category = params['categories_id'];
-                    console.log('this.category: ' + this.category);
-                }, 1000);
+                this.category = parseInt(params['categories_id']);
+                console.log('this.category: ' + this.category);
             }
             if(params['categories_id'] && params['good_id']){
                 this.goodsService.getGoodById(params['good_id']);

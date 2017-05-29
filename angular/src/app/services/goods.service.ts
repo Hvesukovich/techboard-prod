@@ -140,6 +140,15 @@ export class GoodsService {
                 this.AllGoods.push(good[0]);
             }
         });
-        
+    }
+
+    //Удаление товара по ID
+    public delGood(id) {
+        for (let good of this.AllGoods) {
+            if (good['id'] == id) {
+            //    Тут надо написать удаление товара из массива. Вот только я нашёл как удлаить ТОЛЬКО последний эжемент
+            }
+        }
+        this.requestsService.delGood(id);
     }
 }
